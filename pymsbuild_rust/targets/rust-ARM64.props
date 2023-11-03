@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <PlatformToolset Condition="$(PlatformToolset) == ''">$(DefaultPlatformToolset)</PlatformToolset>
+    <IntTargetDir Condition="$(IntTargetDir) == ''">$([msbuild]::EnsureTrailingSlash($(DefaultIntTargetDir)))</IntTargetDir>
+    <IntTargetExt Condition="$(IntTargetExt) == ''">$(DefaultIntTargetExt)</IntTargetExt>
+  </PropertyGroup>
+
+  <Import Project="rust-$(Platform)-$(PlatformToolset).props" />
+</Project>
