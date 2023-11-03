@@ -1,7 +1,7 @@
 <Project>
   <Target Name="_GetPdbPackageFiles">
     <ItemGroup>
-      <AllSourceFiles Include="$(IntDir)$(IntTargetDir)$(RootNamespace).pdb" Condition="$(Configuration) == 'Debug'">
+      <AllSourceFiles Include="$(IntDir)$(IntTargetDir)$(IntTargetName).pdb" Condition="$(Configuration) == 'Debug'">
         <TargetDir></TargetDir>
         <TargetName>$(TargetName)</TargetName>
         <TargetExt>.pdb</TargetExt>

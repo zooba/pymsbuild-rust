@@ -6,7 +6,7 @@
   <Target Name="_CalculateRustCompileItems">
     <ItemGroup>
       <_RustCompile Include="@(None);@(Cargo)" />
-      <_IntTargetFile Include="$([msbuild]::EnsureTrailingSlash($(IntDir)))$([msbuild]::EnsureTrailingSlash($(IntTargetDir)))$(RootNamespace)$(IntTargetExt)">
+      <_IntTargetFile Include="$([msbuild]::EnsureTrailingSlash($(IntDir)))$([msbuild]::EnsureTrailingSlash($(IntTargetDir)))$(IntTargetName)$(IntTargetExt)">
         <Destination>$(OutDir)$(TargetName)$(TargetExt)</Destination>
       </_IntTargetFile>
     </ItemGroup>
