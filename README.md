@@ -12,9 +12,9 @@ While Cargo is used to run the build, all files need to be specified from your
 `_msbuild.py` file to be collected when building an sdist, and to handle
 incremental builds correctly.
 
-```
+```python
 from pymsbuild import *
-from pymsbuild_winui import *
+from pymsbuild_rust import *
 
 METADATA = {...}
 
@@ -34,7 +34,7 @@ The `Cargo` element refers to your `Cargo.toml`, which should specify that a
 `cdylib` is to be built. The name of the lib should match the name provided to
 `RustPydFile`, which will also be the resulting extension module's name.
 
-```
+```toml
 [lib]
 name = "native"
 crate-type = ["cdylib"]
