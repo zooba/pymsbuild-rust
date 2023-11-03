@@ -30,7 +30,7 @@ METADATA = {
     ],
     "Requires-External": "rust",
     "Requires-Dist": [
-        "pymsbuild>=1.0.0b1",
+        "pymsbuild>=1.0.0b9",
     ],
     "WheelTag": "py3-none-any",
 }

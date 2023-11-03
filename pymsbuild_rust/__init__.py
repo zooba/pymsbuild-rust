@@ -1,4 +1,4 @@
-from .pymsbuild import RustPydFile
+from .pymsbuild import Cargo, RustPydFile
 
 __version__ = "%VERSION%"
 try:
@@ -7,4 +7,4 @@ try:
 except ValueError:
     PYMSBUILD_REQUIRES_SPEC = "pymsbuild_rust"
 
-__all__ = ["RustPydFile"]
+__all__ = ["Cargo", "RustPydFile"]
