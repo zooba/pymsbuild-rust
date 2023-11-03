@@ -36,5 +36,8 @@ def test_build_package1(tmp_path):
         env_exe = tmp_path / "Scripts" / "python.exe"
     else:
         env_exe = tmp_path / "bin" / "python"
-    run(env_exe, "-m", "pymsbuild", cwd=ROOT)
-    run(env_exe, "verify.py", cwd=ROOT)
+    try:
+        run(env_exe, "-m", "pymsbuild", "-v", cwd=ROOT)
+        run(env_exe, "verify.py", cwd=ROOT)
+    finally:
+        print(*ROOT.rglob("*"), sep="\n")
