@@ -1,0 +1,41 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Set up dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.x'
+      if: ${{ matrix.os != 'windows-latest' }}
+    - uses: hecrj/setup-rust-action@v2
+      with:
+        rust-version: stable
+    - name: Install dependencies
+      run: pip install -r tests/requirements.txt
+    - name: Test with pytest
+      run: pytest
+      env:
+        PYTHON_CONFIG: python3-config
+    - name: Check self builds
+      run: python -m pymsbuild sdist wheel
+      env:
+        PYTHON_CONFIG: python3-config
