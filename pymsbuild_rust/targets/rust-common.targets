@@ -3,6 +3,16 @@
     <MakeDir Directories="$(IntDir);$(OutDir)" />
   </Target>
 
+  <PropertyGroup>
+    <GetSdistFilesTargets>_GetRustSdistFiles;$(GetSdistFilesTargets)</GetSdistFilesTargets>
+  </PropertyGroup>
+
+  <Target Name="_GetRustSdistFiles">
+    <ItemGroup>
+      <AllSourceFiles Include="@(Cargo)" />
+    </ItemGroup>
+  </Target>
+
   <Target Name="_CalculateRustCompileItems">
     <ItemGroup>
       <_RustCompile Include="@(None);@(Cargo)" />
