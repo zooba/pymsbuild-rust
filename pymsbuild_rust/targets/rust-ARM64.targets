@@ -1,7 +1,7 @@
 <Project>
   <Target Name="_GetPdbPackageFiles">
     <ItemGroup>
-      <AllSourceFiles Include="$(OutDir)$(TargetName).pdb" Condition="$(Configuration) == 'Debug'">
+      <AllSourceFiles Include="$(IntDir)$(IntTargetDir)$(IntTargetName).pdb" Condition="$(Configuration) == 'Debug'">
         <TargetDir></TargetDir>
         <TargetName>$(TargetName)</TargetName>
         <TargetExt>.pdb</TargetExt>
@@ -15,5 +15,5 @@
     <GetPackageFilesTargets>_GetPdbPackageFiles;$(GetPackageFilesTargets)</GetPackageFilesTargets>
   </PropertyGroup>
 
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" Condition="$(VCTargetsPath) != ''" />
+  <Import Project="rust-common.targets" />
 </Project>
