@@ -4,6 +4,7 @@
     <IntTargetDir Condition="$(IntTargetDir) == ''">$([msbuild]::EnsureTrailingSlash($(DefaultIntTargetDir)))</IntTargetDir>
     <IntTargetName Condition="$(IntTargetName) == ''">lib$(RootNamespace)</IntTargetName>
     <IntTargetExt Condition="$(IntTargetExt) == ''">$(DefaultIntTargetExt)</IntTargetExt>
+    <TargetExt Condition="$(ConfigurationType) == 'ExtensionModule'">$(DefaultExtSuffix)</TargetExt>
   </PropertyGroup>
 
   <Import Project="rust-$(Platform)-$(PlatformToolset).props" />

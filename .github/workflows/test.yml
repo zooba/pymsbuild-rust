@@ -14,6 +14,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         python-version: ['3.10', '3.11', '3.12']
+        install: ['pymsbuild>=1.0', 'pymsbuild>=1.0a1']
 
     steps:
     - uses: actions/checkout@v3
@@ -30,7 +31,7 @@ jobs:
       with:
         rust-version: stable
     - name: Install dependencies
-      run: pip install -r tests/requirements.txt
+      run: pip install ${{ matrix.install }} -r tests/requirements.txt
     - name: Test with pytest
       run: pytest
       env:
