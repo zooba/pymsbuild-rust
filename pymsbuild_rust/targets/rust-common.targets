@@ -29,6 +29,8 @@
 
   <Target Name="_RustRunCompile">
     <Message Text="%(Cargo.Identity) -> @(_IntTargetFile)" Importance="high" />
+    <Error Text="No command specified, check your PlatformToolset (currently $(PlatformToolset))"
+           Condition="$(Rust_Cmd) == ''" />
     <PropertyGroup>
       <!-- Base command -->
       <_Cmd>$(Rust_Cmd)</_Cmd>

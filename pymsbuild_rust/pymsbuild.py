@@ -6,13 +6,23 @@ __all__ = ["RustPydFile", "Cargo"]
 TARGETS = Path(__file__).absolute().parent / "targets"
 
 class RustPydFile(PydFile):
-    class DefaultToolsetImports(ImportGroup):
-        name = "$RustPydFile.DefaultRustImports"
+    class DefaultToolsetProps(ImportGroup):
+        name = "$RustPydFile.DefaultRustProps"
         imports = [
             "$(PyMsbuildTargets)/common.props",
             "$(PyMsbuildRustTargets)/rust-default-$(Platform).props",
         ]
 
+    # Legacy name
+    DefaultToolsetImports = DefaultToolsetProps
+
+    class ToolsetProps(ImportGroup):
+        name = "$RustPydFile.RustProps"
+        imports = [
+            "$(PyMsbuildRustTargets)/rust-$(Platform).props",
+        ]
+
+    # Legacy name, also requires pyd.props here
     class ToolsetImports(ImportGroup):
         name = "$RustPydFile.RustImports"
         imports = [
